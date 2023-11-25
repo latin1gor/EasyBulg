@@ -73,7 +73,7 @@ const Dropzone: FC = () => {
     <div className={"flex flex-col"}>
       <div
         className={
-          "flex bg-slate-100 flex-col justify-center transition duration-300 items-center text-center p-30 w-[830px] h-[500px] border-4 border-dashed border-slate-800 rounded-2xl"
+          "flex bg-slate-100 flex-col justify-center transition duration-300 items-center text-center p-30 w-[610px] h-[350px] border-4 border-dashed border-slate-800 rounded-2xl"
         }
         {...getRootProps()}
       >
