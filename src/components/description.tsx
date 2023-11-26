@@ -19,7 +19,7 @@ const Description: FC = () => {
             "text-center text-xl md:text-2xl lg:text-4xl md:text-left font-bold p-3"
           }
         >
-          Structure your Bulgarian dictionary!
+          Learn Bulgarian easily!
         </h1>
         <h3
           className={
