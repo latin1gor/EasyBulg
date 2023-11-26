@@ -10,7 +10,7 @@ const Description: FC = () => {
       <img
         src={SectionLogo}
         alt={"section-logo"}
-        className={"h-36 w-36 md:h-60 md:w-60"}
+        className={"h-40 w-40 mb-5 md:mb-0 md:h-60 md:w-60"}
       />
 
       <div>
