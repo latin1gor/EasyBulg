@@ -4,13 +4,14 @@ import { saveAs } from "file-saver";
 import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button.tsx";
 import { CheckCircle2, Download } from "lucide-react";
+import Confetti from "react-confetti";
 import clsx from "clsx";
 const Dropzone: FC = () => {
   const [file, setFile] = useState<File | null>(null);
   const [content, setContent] = useState<string>("");
+  const [confetti, setConfetti] = useState<boolean>(false);
   const makeAlphabetCount = (content: string) => {
     const words = content.split("\n").filter(Boolean);
-
     const wordCounts: Record<string, number> = {};
 
     words.map((word) => {
@@ -52,14 +53,14 @@ const Dropzone: FC = () => {
 
   const handleSave = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-
+    setConfetti(true);
     const modifiedContent = makeAlphabetCount(content);
 
     const blob = new Blob([modifiedContent], {
       type: "text/plain;charset=utf-8",
     });
 
-    saveAs(blob, `new_file.docx`);
+    saveAs(blob, `modified_${file?.name}`);
     setFile(null);
   };
   const { getRootProps, getInputProps } = useDropzone({
@@ -73,7 +74,7 @@ const Dropzone: FC = () => {
     <div className={"flex flex-col"}>
       <div
         className={
-          "flex bg-slate-100 flex-col justify-center transition duration-300 items-center text-center p-30 w-[610px] h-[350px] border-4 border-dashed border-slate-800 rounded-2xl"
+          "flex bg-slate-100 flex-col justify-center transition duration-300 items-center text-center p-30 w-[310px] h-[420px]  sm:min-w-[410px] sm:min-h-[270px]  md:min-w-[610px] md:min-h-[350px] lg:min-h-[450px] lg:min-w-[740px] border-4 border-dashed border-slate-800 rounded-2xl"
         }
         {...getRootProps()}
       >
@@ -97,21 +98,32 @@ const Dropzone: FC = () => {
               {file ? (
                 <span className={"font-semibold"}> {file.name} is ready</span>
               ) : (
-                <Button className={"mt-4"}>Browse</Button>
+                <Button className={"mt-2 md:mt-4"}>Browse</Button>
               )}
             </div>
           </label>
         </div>
       </div>
       <Button
-        className={clsx("mt-3 rounded-xl transition duration-300", {
-          "opacity-0": !file,
-          "opacity-100": file,
-        })}
+        className={clsx(
+          "mt-3 rounded-xl transition duration-300 bg-slate-950",
+          {
+            "opacity-0": !file,
+            "opacity-100": file,
+          },
+        )}
         onClick={(e) => handleSave(e)}
       >
         Save
       </Button>
+      {confetti && (
+        <Confetti
+          width={1300}
+          height={1200}
+          numberOfPieces={700}
+          recycle={false}
+        />
+      )}
     </div>
   );
 };

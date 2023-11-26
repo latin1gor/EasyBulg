@@ -5,7 +5,7 @@ import Description from "@/components/description.tsx";
 
 const App: FC = () => {
   return (
-    <div className="">
+    <div className="overflow-hidden">
       <header>
         <Header />
       </header>
