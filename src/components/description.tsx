@@ -7,7 +7,11 @@ const Description: FC = () => {
         "flex flex-col h-96 md:flex-row md:h-60 w-full bg-white items-center justify-center my-10 "
       }
     >
-      <img src={SectionLogo} alt={"section-logo"} className={"h-60 w-60"} />
+      <img
+        src={SectionLogo}
+        alt={"section-logo"}
+        className={"h-36 w-36 md:h-60 md:w-60"}
+      />
 
       <div>
         <h1
