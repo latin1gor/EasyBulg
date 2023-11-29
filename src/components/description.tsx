@@ -23,7 +23,7 @@ const Description: FC = () => {
         </h1>
         <h3
           className={
-            "font-normal text-center text-sm md:text-base md:text-left text-zinc-700 w-96 p-3"
+            "font-normal text-center text-sm md:text-base md:text-left text-zinc-700 w-96 p-3 "
           }
         >
           Input your docx document with bulgarian list of words and our service
