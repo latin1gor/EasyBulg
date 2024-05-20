@@ -6,12 +6,13 @@ import { Button } from "@/components/ui/button.tsx";
 import { CheckCircle2, Download } from "lucide-react";
 import Confetti from "react-confetti";
 import clsx from "clsx";
+
 const Dropzone: FC = () => {
   const [file, setFile] = useState<File | null>(null);
   const [content, setContent] = useState<string>("");
   const [confetti, setConfetti] = useState<boolean>(false);
   const makeAlphabetCount = (content: string) => {
-    const words = content.split("\n").filter(Boolean);
+    const words = content.split(" ").filter(Boolean);
     const wordCounts: Record<string, number> = {};
 
     words.map((word) => {
