@@ -30,8 +30,11 @@ const Dropzone: FC = () => {
 
     const newContent = sortedWords
       .map((word) => {
-        console.log("word", word);
-        return `${word} (${wordCounts[word]})`;
+        console.log(word)
+        if (typeof word === "string" && word !== '') {
+        return `${word[0].toUpperCase() + word.substring(1)}`;
+        }
+        
       })
       .join("\n");
     console.log("newcontent", newContent);
@@ -60,7 +63,7 @@ const Dropzone: FC = () => {
       type: "text/plain;charset=utf-8",
     });
 
-    saveAs(blob, `modified_${file?.name}`);
+    saveAs(blob, `final_${file?.name}`);
     setFile(null);
   };
   const { getRootProps, getInputProps } = useDropzone({
